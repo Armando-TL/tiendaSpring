@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <div class="content-table"> 
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Unidades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${productos}">
+                        <td th:text="${producto.id}"></td>
+                        <td th:text="${producto.nombre}"></td>
+                        <td th:text="${producto.precio + ' mil'}"></td>
+                        <td th:text="${producto.existencia + ' Disponibles'}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-container">
+            <form id="productoForm" method="post">
+                <div class="form-group">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                    <input type="number" id="precio" name="precio" placeholder="Precio">
+                    <input type="number" id="unidades" name="unidades" placeholder="Unidades">
+                </div>
+                <div class="form-group">
+                    <input type="number" id="id" name="id" placeholder="ID">
+                    <button id="submitButton" type="submit">Crear Producto</button>
+                </div>
+            </form>
+        </div>
+
+        <script src="logica.js"></script>
+    </body>
+</html>
